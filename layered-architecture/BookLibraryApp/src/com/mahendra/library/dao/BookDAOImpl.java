@@ -3,6 +3,7 @@ package com.mahendra.library.dao;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import com.mahendra.library.exceptions.ApplicationException;
 import com.mahendra.library.models.Book;
@@ -106,6 +107,18 @@ public class BookDAOImpl implements BookDAO {
 		if(findById(book.getId())!=null)
 			throw new ApplicationException("Book already exists!");
 		store.getBooks().put(book.getId(),book);
+	}
+	
+	@Override
+	public int nextId() {
+		Set<Integer> keys = store.getBooks().keySet();
+		int highest = 0;
+		for(int key : keys) {
+			if(key > highest) {
+				highest = key;
+			}
+		}
+		return highest+1;
 	}
 
 }

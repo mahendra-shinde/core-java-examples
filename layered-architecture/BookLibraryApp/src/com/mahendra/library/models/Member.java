@@ -1,6 +1,8 @@
 package com.mahendra.library.models;
 
-public class Member {
+import java.io.Serializable;
+
+public class Member implements Serializable {
 	private Integer id;
 	private String firstName;
 	private String lastName;

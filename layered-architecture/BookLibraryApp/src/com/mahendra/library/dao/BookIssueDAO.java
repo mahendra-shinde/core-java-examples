@@ -12,6 +12,9 @@ public interface BookIssueDAO {
 	List<BookIssue> findByEstimatedReturnDate(Date estimatedReturnDate);
 	List<BookIssue> findByBookId(Integer bookId);
 	List<BookIssue> findByMemberId(Integer memberId);
+	List<BookIssue> findByStatus(char status);
 	void update(BookIssue BookIssue);
 	void save(BookIssue BookIssue);
+	public int nextId();
+
 }

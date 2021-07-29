@@ -1,8 +1,9 @@
 package com.mahendra.library.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class BookIssue {
+public class BookIssue implements Serializable{
 	private Integer id;
 	private Integer bookId;
 	private Integer memberId;

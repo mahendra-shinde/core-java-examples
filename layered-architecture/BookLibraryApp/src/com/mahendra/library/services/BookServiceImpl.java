@@ -1,4 +1,4 @@
-package com.mahendra.library;
+package com.mahendra.library.services;
 
 import java.util.List;
 
@@ -7,17 +7,17 @@ import com.mahendra.library.exceptions.ApplicationException;
 import com.mahendra.library.models.Book;
 
 public class BookServiceImpl implements BookService {
-private BookDAO dao;
-	
+	private BookDAO dao;
+
 	public BookServiceImpl(BookDAO dao) {
-	super();
-	this.dao = dao;
-}
+		super();
+		this.dao = dao;
+	}
 
 	@Override
 	public Book findById(Integer id) {
 		Book temp = dao.findById(id);
-		if(temp==null)
+		if (temp == null)
 			throw new ApplicationException("Book not found!");
 		return temp;
 	}
@@ -56,6 +56,14 @@ private BookDAO dao;
 	public List<Book> findAvailableByCategory(String category) {
 		List<Book> temp = dao.findAvailableByCategory(category);
 		return temp;
+	}
+
+	@Override
+	public Book create(Book b) {
+		int newId = dao.nextId();
+		b.setId(newId);
+		dao.save(b);
+		return b;
 	}
 
 }

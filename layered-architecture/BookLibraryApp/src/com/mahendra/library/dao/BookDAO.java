@@ -18,4 +18,5 @@ public interface BookDAO {
 	
 	void update(Book book);
 	void save(Book book);
+	public int nextId();
 }
